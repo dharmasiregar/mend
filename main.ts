@@ -225,7 +225,7 @@ function unifiedEdits(lines: string[], strict: boolean): Edit[] {
     }
     i += 1;
   }
-  if (sections.length === 0 || sections.every((s) => s.hunks.length === 0 && !s.create && !s.delete)) throw new Exit2('error: parse 1');
+  if (sections.length === 0) throw new Exit2('error: parse 1');
   const edits: Edit[] = sections.map((s) => {
     const oldPath = s.oldPath ?? s.renameOld ?? s.diffOld;
     const newPath = s.newPath ?? s.renameNew ?? s.diffNew;
